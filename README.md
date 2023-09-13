@@ -37,8 +37,21 @@ npm start
 
 ### 필터링 기능 구현
 
-> ✅ 
-> **[FilterBtnList.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/FilterBtnList.tsx), [Chart.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/Chart.tsx)**
+> ✅ **[FilterBtnList.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/FilterBtnList.tsx), [Chart.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/Chart.tsx)**
+
+```tsx
+<Bar
+	yAxisId="right"
+	dataKey="value_bar"
+	barSize={20}
+	fill="#a8a4e5"
+	onClick={chartData => handleSelectedId(chartData.id)}
+>
+	{chartData.map((entry, index) => (
+		<Cell key={index} fill={entry.id === selectedId ? '#7871dd' : '#a8a4e5'} />
+	))}
+</Bar>
+```
 
 - 필터링 버튼 리스트 컴포넌트를 만들어 버튼 클릭시 동일한 id값을 가진 데이터 구역이 하이라이트되도록 만들었습니다.
 - 선택된 id값과 데이터의 id값이 일치하는지 판단하여 차트의 데이터 구역의 색상을 변경시켜 효과를 주었습니다.
