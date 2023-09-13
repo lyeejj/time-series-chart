@@ -10,34 +10,36 @@ npm start
 ```
 
 ## 구현 화면
+
 <img width='680px' alt="chart-assignment" src="https://github.com/lyeejj/time-series-chart/assets/72495998/7a27e391-5b5b-4c59-a165-9104512f25b3" />
 
 🔗 [배포 링크](https://time-series-chart-project.vercel.app/)
 
-
-## 구현 기능 설명
+## 구현 설명
 
 ### 1. 차트 만들기
 
-> ✅ 
-**[Chart.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/Chart.tsx)**
-> 
+> ✅ **[Chart.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/Chart.tsx)**
+
 - 데이터를 시각화하기 위한 차트 라이브러리로 Recharts를 선정했습니다.
 - Recharts는 리액트와의 통합이 용이하고 커스텀이 가능합니다. 또한 문서화가 잘 되어 있어 쉽게 사용이 가능하다고 판단하여 사용하게 되었습니다.
 - 공식문서에 나와있는 다양한 차트와 컴포넌트를 통해 편리하게 적용하여 구현할 수 있었습니다.
 
 ### 호버 기능 구현
 
-> ✅ 
-**[CustomTooltip.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/CustomTooltip.tsx)**
-> 
+> ✅ **[CustomTooltip.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/CustomTooltip.tsx)**
+
+```tsx
+<Tooltip content={<CustomTooltip />} />
+```
+
 - 기본 툴팁을 사용하지 않고 커스텀 툴팁을 만들어 호버 했을때 id, value_area, value_bar 데이터가 보일 수 있도록 만들었습니다.
 
 ### 필터링 기능 구현
 
 > ✅ 
- **[FilterBtnList.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/FilterBtnList.tsx), [Chart.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/Chart.tsx)**
-> 
+> **[FilterBtnList.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/FilterBtnList.tsx), [Chart.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/Chart.tsx)**
+
 - 필터링 버튼 리스트 컴포넌트를 만들어 버튼 클릭시 동일한 id값을 가진 데이터 구역이 하이라이트되도록 만들었습니다.
 - 선택된 id값과 데이터의 id값이 일치하는지 판단하여 차트의 데이터 구역의 색상을 변경시켜 효과를 주었습니다.
 - 데이터 구역 클릭시에도 선택된 id값을 변경시켜 필터링 기능이 적용됩니다.
