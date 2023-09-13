@@ -1,29 +1,54 @@
-import { ComposedChart, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import {
+	ResponsiveContainer,
+	ComposedChart,
+	Area,
+	Bar,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+	Tooltip,
+	Legend,
+} from 'recharts';
 import useChartData from '../hooks/useChartData';
 
 function Chart() {
-	const chartData = useChartData();
+	const { chartData, regionArr } = useChartData();
+	const date = chartData[0].date;
 	return (
-		<ComposedChart
-			width={1200}
-			height={400}
-			data={chartData}
-			margin={{
-				top: 20,
-				right: 20,
-				bottom: 20,
-				left: 20,
-			}}
-		>
-			<CartesianGrid stroke="#f5f5f5" />
-			<XAxis dataKey="date" />
-			<YAxis yAxisId="left" domain={[0, (max: number) => Math.max(max * 2, 200)]} />
-			<YAxis yAxisId="right" orientation="right" />
-			<Tooltip />
-			<Legend />
-			<Bar yAxisId="right" dataKey="value_bar" barSize={20} fill="#8884d8" />
-			<Area yAxisId="left" dataKey="value_area" fill="#a5db58" stroke="#a5db58" />
-		</ComposedChart>
+		<>
+			<ResponsiveContainer width="100%" height={400}>
+				<ComposedChart
+					data={chartData}
+					margin={{
+						top: 20,
+						right: 50,
+						bottom: 20,
+						left: 50,
+					}}
+				>
+					<CartesianGrid stroke="#f5f5f5" />
+					<XAxis
+						dataKey="time"
+						minTickGap={30}
+						label={{ value: `${date}일자`, position: 'insideBottomLeft', dx: -15, dy: 20 }}
+					/>
+					<YAxis
+						yAxisId="left"
+						domain={[0, (max: number) => Math.max(max * 2, 200)]}
+						label={{ value: 'area', angle: -90, position: 'left' }}
+					/>
+					<YAxis
+						yAxisId="right"
+						orientation="right"
+						label={{ value: 'bar', angle: 90, position: 'right', offset: 18 }}
+					/>
+					<Tooltip />
+					<Legend />
+					<Bar yAxisId="right" dataKey="value_bar" barSize={20} fill="#a8a4e5" />
+					<Area yAxisId="left" dataKey="value_area" fill="#a5db58" stroke="#a5db58" />
+				</ComposedChart>
+			</ResponsiveContainer>
+		</>
 	);
 }
 export default Chart;
