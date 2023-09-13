@@ -4,14 +4,23 @@ interface FilterBtnListProps {
 	filterIds: string[];
 	resetFilter: () => void;
 	handleSelectedId: (id: string) => void;
+	selectedId: string | null;
 }
 
-function FilterBtnList({ filterIds, resetFilter, handleSelectedId }: FilterBtnListProps) {
+function FilterBtnList({ ...props }: FilterBtnListProps) {
 	return (
 		<FilterList>
-			<ItemButton onClick={resetFilter}>해제</ItemButton>
-			{filterIds.map(id => (
-				<ItemButton onClick={() => handleSelectedId(id)}>{id}</ItemButton>
+			<ItemButton isSelected={false} onClick={props.resetFilter}>
+				해제
+			</ItemButton>
+			{props.filterIds.map(id => (
+				<ItemButton
+					key={id}
+					isSelected={props.selectedId === id}
+					onClick={() => props.handleSelectedId(id)}
+				>
+					{id}
+				</ItemButton>
 			))}
 		</FilterList>
 	);
@@ -24,17 +33,16 @@ const FilterList = styled.div`
 	margin: 30px 100px;
 `;
 
-const ItemButton = styled.button`
+const ItemButton = styled.button<{ isSelected: boolean }>`
 	padding: 8px 10px;
-	border: 1px solid #626262;
+	border: 1px solid ${props => (props.isSelected ? '#62dd8b' : '#626262')};
 	border-radius: 10px;
 	background-color: transparent;
-	color: #505050;
+	color: ${props => (props.isSelected ? '#62dd8b' : '#505050')};
 	font-size: 1.1rem;
 	cursor: pointer;
 
-	&:hover,
-	&:focus {
+	&:hover {
 		border: 1px solid #62dd8b;
 		color: #62dd8b;
 	}

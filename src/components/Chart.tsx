@@ -1,3 +1,7 @@
+import CustomTooltip from './CustomTooltip';
+import FilterBtnList from './FilterBtnList';
+import useChartData from '../hooks/useChartData';
+import useFilterId from '../hooks/useFilterId';
 import {
 	ResponsiveContainer,
 	ComposedChart,
@@ -10,10 +14,6 @@ import {
 	Legend,
 	Cell,
 } from 'recharts';
-import useChartData from '../hooks/useChartData';
-import CustomTooltip from './CustomTooltip';
-import FilterBtnList from './FilterBtnList';
-import useFilterId from '../hooks/useFilterId';
 
 function Chart() {
 	const { chartData, regionArr } = useChartData();
@@ -26,6 +26,7 @@ function Chart() {
 				filterIds={regionArr}
 				resetFilter={resetFilter}
 				handleSelectedId={handleSelectedId}
+				selectedId={selectedId}
 			/>
 			<ResponsiveContainer width="100%" height={400}>
 				<ComposedChart
