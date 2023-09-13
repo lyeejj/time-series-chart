@@ -3,17 +3,17 @@ import styled from '@emotion/styled';
 
 function CustomTooltip({ active, payload }: TooltipProps<string, string>) {
 	if (active && payload && payload.length) {
-		const data = payload[0].payload;
+		const tooltipData = payload[0].payload;
 		return (
 			<TooltipContainer>
-				<TooltipContent>{data.id}</TooltipContent>
+				<TooltipContent>{tooltipData.id}</TooltipContent>
 				<TooltipContent>
 					<ContentAreaBox />
-					{data.value_area}
+					{tooltipData.value_area}
 				</TooltipContent>
 				<TooltipContent>
 					<ContentBarBox />
-					{data.value_bar}
+					{tooltipData.value_bar}
 				</TooltipContent>
 			</TooltipContainer>
 		);
@@ -41,12 +41,12 @@ const ContentAreaBox = styled.div`
 	width: 10px;
 	height: 10px;
 	margin-right: 0.2rem;
-	background-color: #a8a4e5;
+	background-color: #a5db58;
 `;
 const ContentBarBox = styled.div`
 	display: inline-block;
 	width: 10px;
 	height: 10px;
 	margin-right: 0.2rem;
-	background-color: #a5db58;
+	background-color: #a8a4e5;
 `;
