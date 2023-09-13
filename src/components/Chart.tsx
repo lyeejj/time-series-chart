@@ -1,26 +1,8 @@
-import { useEffect, useState } from 'react';
-import HttpClient from '../api/httpClient';
 import { ComposedChart, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { ChartData, ResponseData } from '../types';
+import useChartData from '../hooks/useChartData';
 
 function Chart() {
-	const [chartData, setChartData] = useState<ChartData[]>([]);
-	const httpClient = new HttpClient<ResponseData>('/data');
-
-	useEffect(() => {
-		const fetchChartData = async () => {
-			const response = await httpClient.getData('mockData.json');
-			const convertedData = Object.entries(response.response).map(([date, value]) => ({
-				date,
-				id: value.id,
-				value_area: value.value_area,
-				value_bar: value.value_bar,
-			}));
-			console.log(convertedData);
-			setChartData(convertedData);
-		};
-		fetchChartData();
-	}, []);
+	const chartData = useChartData();
 	return (
 		<ComposedChart
 			width={1200}
