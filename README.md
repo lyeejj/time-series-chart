@@ -15,6 +15,30 @@ npm start
 🔗 [배포 링크](https://time-series-chart-project.vercel.app/)
 
 
+## 구현 기능 설명
+
+### 1. Api 설정
+
+- HttpClient 클래스를 만들어 변경에 유연하도록 구현했습니다.
+- axios Instance를 활용했습니다.
+
+### 2. 관심사 분리와 재사용
+
+- useChartData와 useFilterData 를 따로 생성하여 로직을 분리하여 구체화된 코드가 관리되도록 했습니다.
+- useChartData : httpClient를 통해 데이터를 불러온 값과 id값들을 담기위해 new Set을 이용하여 중복없이 id값들을 담아 리턴해줍니다.
+- useFilterData : 필터링에 필요한 선택된 id값과 함수들을 리턴해줍니다.
+
+### 3. 차트 만들기
+
+> ✅ 
+**[Chart.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/Chart.tsx)**, **[CustomTooltip.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/CustomTooltip.tsx), [FilterBtnList.tsx](https://github.com/lyeejj/time-series-chart/blob/main/src/components/FilterBtnList.tsx)**
+
+- 데이터를 시각화하기 위한 차트 라이브러리로 Recharts를 선정했습니다.
+- Recharts는 리액트와의 통합이 용이하고 커스텀이 가능합니다. 또한 문서화가 잘 되어 있어 쉽게 사용이 가능하다고 판단하여 사용하게 되었습니다.
+- 공식문서에 나와있는 다양한 차트와 컴포넌트를 통해 편리하게 적용하여 구현할 수 있었습니다.
+- 기본 툴팁을 사용하지 않고 커스텀 툴팁을 만들어 호버 했을때 id, value_area, value_bar 데이터가 보일 수 있도록 만들었습니다.
+- 필터링 버튼을 나타내는 컴포넌트를 만들어 동일한 id값을 가진 데이터 구역을 하이라이트하여 필터링되도록 만들었습니다.
+
 ## 기술 스택 및 사용한 라이브러리
 
 기술 스택
