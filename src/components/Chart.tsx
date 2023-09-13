@@ -10,10 +10,11 @@ import {
 	Legend,
 } from 'recharts';
 import useChartData from '../hooks/useChartData';
+import CustomTooltip from './CustomTooltip';
 
 function Chart() {
 	const { chartData, regionArr } = useChartData();
-	const date = chartData[0].date;
+	const date = chartData[0]?.date;
 	return (
 		<>
 			<ResponsiveContainer width="100%" height={400}>
@@ -42,7 +43,7 @@ function Chart() {
 						orientation="right"
 						label={{ value: 'bar', angle: 90, position: 'right', offset: 18 }}
 					/>
-					<Tooltip />
+					<Tooltip content={<CustomTooltip />} />
 					<Legend />
 					<Bar yAxisId="right" dataKey="value_bar" barSize={20} fill="#a8a4e5" />
 					<Area yAxisId="left" dataKey="value_area" fill="#a5db58" stroke="#a5db58" />
