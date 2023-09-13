@@ -8,15 +8,25 @@ import {
 	CartesianGrid,
 	Tooltip,
 	Legend,
+	Cell,
 } from 'recharts';
 import useChartData from '../hooks/useChartData';
 import CustomTooltip from './CustomTooltip';
+import FilterBtnList from './FilterBtnList';
+import useFilterId from '../hooks/useFilterId';
 
 function Chart() {
 	const { chartData, regionArr } = useChartData();
+	const { selectedId, resetFilter, handleSelectedId } = useFilterId();
 	const date = chartData[0]?.date;
+
 	return (
 		<>
+			<FilterBtnList
+				filterIds={regionArr}
+				resetFilter={resetFilter}
+				handleSelectedId={handleSelectedId}
+			/>
 			<ResponsiveContainer width="100%" height={400}>
 				<ComposedChart
 					data={chartData}
@@ -45,7 +55,11 @@ function Chart() {
 					/>
 					<Tooltip content={<CustomTooltip />} />
 					<Legend />
-					<Bar yAxisId="right" dataKey="value_bar" barSize={20} fill="#a8a4e5" />
+					<Bar yAxisId="right" dataKey="value_bar" barSize={20} fill="#a8a4e5">
+						{chartData.map((entry, index) => (
+							<Cell key={index} fill={entry.id === selectedId ? '#7871dd' : '#a8a4e5'} />
+						))}
+					</Bar>
 					<Area yAxisId="left" dataKey="value_area" fill="#a5db58" stroke="#a5db58" />
 				</ComposedChart>
 			</ResponsiveContainer>
