@@ -24,3 +24,31 @@ npm start
 추가 라이브러리
 
 <img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white"> <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"/> <img src="https://img.shields.io/badge/Recharts-FF6384?style=for-the-badge&logo=Recharts&logoColor=white"/>
+
+## 폴더 구조
+
+```
+📦src
+ ┣ 📂api
+ ┃ ┗ 📜httpClient.ts
+ ┣ 📂components
+ ┃ ┣ 📜Chart.tsx
+ ┃ ┣ 📜CustomTooltip.tsx
+ ┃ ┗ 📜FilterBtnList.tsx
+ ┣ 📂constants
+ ┃ ┗ 📜constants.ts
+ ┣ 📂hooks
+ ┃ ┣ 📜useChartData.tsx
+ ┃ ┗ 📜useFilterId.tsx
+ ┣ 📂pages
+ ┃ ┣ 📜ChartPage.tsx
+ ┃ ┗ 📜NotFoundPage.tsx
+ ┣ 📂styles
+ ┃ ┗ 📜globalStyle.ts
+ ┣ 📂types
+ ┃ ┗ 📜index.ts
+ ┣ 📂utils
+ ┃ ┗ 📜getDate.ts
+ ┣ 📜App.tsx
+ ┗ 📜index.tsx
+```
