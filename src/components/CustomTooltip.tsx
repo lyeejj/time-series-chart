@@ -23,7 +23,7 @@ function CustomTooltip({ active, payload }: TooltipProps<string, string>) {
 }
 export default CustomTooltip;
 
-const TooltipContainer = styled.div`
+const TooltipContainer = styled.ul`
 	width: 100px;
 	height: 80px;
 	padding: 0.8rem;
@@ -32,7 +32,7 @@ const TooltipContainer = styled.div`
 	color: #fff;
 `;
 
-const TooltipContent = styled.p`
+const TooltipContent = styled.li`
 	margin-bottom: 0.3rem;
 `;
 
