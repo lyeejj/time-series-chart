@@ -18,8 +18,6 @@ const useChartData = () => {
 				value_bar: value.value_bar,
 			}));
 			const regionIds = [...new Set(convertedData.map(data => data.id))];
-			console.log(convertedData);
-			console.log(regionIds);
 			setRegionArr(regionIds);
 			setChartData(convertedData);
 		};
