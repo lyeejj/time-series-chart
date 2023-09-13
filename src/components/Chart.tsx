@@ -56,7 +56,13 @@ function Chart() {
 					/>
 					<Tooltip content={<CustomTooltip />} />
 					<Legend />
-					<Bar yAxisId="right" dataKey="value_bar" barSize={20} fill="#a8a4e5">
+					<Bar
+						yAxisId="right"
+						dataKey="value_bar"
+						barSize={20}
+						fill="#a8a4e5"
+						onClick={chartData => handleSelectedId(chartData.id)}
+					>
 						{chartData.map((entry, index) => (
 							<Cell key={index} fill={entry.id === selectedId ? '#7871dd' : '#a8a4e5'} />
 						))}
