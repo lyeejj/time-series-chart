@@ -1,4 +1,10 @@
+import Chart from '../components/Chart';
+
 function ChartPage() {
-	return <>ChartPage</>;
+	return (
+		<>
+			<Chart />
+		</>
+	);
 }
 export default ChartPage;
